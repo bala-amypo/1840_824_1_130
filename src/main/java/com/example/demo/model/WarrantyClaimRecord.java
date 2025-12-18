@@ -45,7 +45,7 @@ import jakarta.persistence.GenerationType;
         return claimReason;
     }
     public void setClaimantReason(String claimReason){
-        this.claimReason = climReason;
+        this.claimReason = claimReason;
     }
     public LocalDateTime getsubmittedAt(){
         return submittedAt;
@@ -64,7 +64,7 @@ import jakarta.persistence.GenerationType;
         this.serialNumber = serialNumber;
         this.claimantName = claimantName;
         this.claimantEmail = claimantEmail;
-        this.claimReason = climReason;
+        this.claimReason = claimReason;
         this.submittedAt = submittedAt;
         this.status = status;
         
