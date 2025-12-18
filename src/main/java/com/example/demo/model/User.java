@@ -43,5 +43,14 @@ package com.example.demo.model;
         public void  setCreatedAt(LocalDateTime createdAt){
             this.createdAt = createdAt;
         }
+        public User(Long id,String name,String email,String password,Set<String> roles,LocalDateTime createdAt){
+            this.id = id;
+            this.name = name;
+            this.email = email;
+            this.password = password;
+            this.roles = roles;
+            this.createdAt = createdAt;
+        }
+
  
     }
