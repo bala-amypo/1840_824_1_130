@@ -38,6 +38,17 @@ package com.example.demo.model;
         public void setPurchaseDate(LocalDate purchaseDate){
             this.purchaseDate = purchaseDate;
         }
-        public LocalDate getwarranty
+        public LocalDate getwarrantyExpiration(){
+            return warrantyExpiration;
+        }
+        public void setWarrantyExpiration(LocalDate warrantyExpiration){
+            this.warrantyExpiration = warrantyExpiration;
+        }
+        public Boolean getActive(){
+            return active;
+        }
+        public void setActive(Boolean active){
+            this.active = active;
+        }
 
     }
