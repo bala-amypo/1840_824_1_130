@@ -26,5 +26,19 @@ package com.example.demo.model;
     public void setClaimantName(String claimantName){
         this.claimantName = claimantName;
     }
-    public String getClaimant
+    public String getClaimantEmail(){
+        return claimantEmail;
+    }
+    public void setclaimantEmail(String claimantEmail){
+        this.claimantEmail = claimantEmail;
+    }
+    public String getClaimReason(){
+        return claimReason;
+    }
+    public void setClaimantReason(String claimReason){
+        this.claimReason = climReason;
+    }
+    public LocalDateTime getsubmittedAt(){
+        return submitteda
+    }
   }
