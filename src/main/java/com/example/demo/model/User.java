@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.time.LocalDate;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import java.util.Set;
     @Entity
     public class User{
          @Id
@@ -44,6 +45,7 @@ import jakarta.persistence.GenerationType;
             return roles;
         }
         public void setRoles(Set<String> roles){
+
             this.roles = roles;
         }
          public LocalDateTime getCreatedAt(){
