@@ -59,8 +59,10 @@ package com.example.demo.model;
              this.warrantyExpiration = warrantyExpiration;
              this.active = active;
         }
-       
-
+        public DeviceOwnershipRecord(){
+            
+        }
+        
     }
 
     
