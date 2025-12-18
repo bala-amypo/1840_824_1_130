@@ -17,6 +17,17 @@ package com.example.demo.model;
         public String getSerialNumber(){
             return serialNumber;
         }
-        
+        public void setSerialNumber(String serialNumber){
+            this.serialNumber = serialNumber;
+        }
+        public String getOwnerName(){
+            return ownerName;
+        }
+        public void setOwnerName(String ownerName){
+            this.ownerName = ownerName;
+        }
+        public String getOwnerEmail(){
+            return 
+        }
 
     }
