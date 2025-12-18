@@ -31,12 +31,17 @@ package com.example.demo.model;
         public void setPassword(String password){
             this.password = password;
         }
-        public Set<String> getPassword(){
-            return password;
+        public Set<String> getRoles(){
+            return roles;
         }
-        public void setPassword(Set<String> password){
-            this.password = password;
+        public void setRoles(Set<String> roles){
+            this.roles = roles;
         }
-        
+         public LocalDateTime getCreatedAt(){
+             return createdAt;
+        }
+        public void  setCreatedAt(LocalDateTime createdAt){
+            this.createdAt = createdAt;
+        }
  
     }
