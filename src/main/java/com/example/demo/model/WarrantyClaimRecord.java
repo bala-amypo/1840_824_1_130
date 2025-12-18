@@ -39,6 +39,15 @@ package com.example.demo.model;
         this.claimReason = climReason;
     }
     public LocalDateTime getsubmittedAt(){
-        return submitteda
+        return submittedAt;
+    }
+    public void  setSubmittedAt(LocalDateTime submittedAt){
+        this.submittedAt = submittedAt;
+    }
+    public String getStatus(){
+        return status;
+    }
+    public void setStatus(String status){
+        this.status = status;
     }
   }
