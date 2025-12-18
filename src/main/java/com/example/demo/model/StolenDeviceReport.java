@@ -36,5 +36,15 @@ package com.example.demo.model;
         public void setDetails(String details){
             this.details = details;
         }
-
+        public StolenDeviceReport(Long id,String serialNumber,String reportedBy,LocalDateTime reportDate,String details){
+            this.id = id;
+            this.serialNumber = serialNumber;
+            this.reportedBy = reportedBy;
+            this.reportDate = reportDate;
+            this.details = details;
+        }
+        public StolenDeviceReport(){
+            
+        }
+       
     }

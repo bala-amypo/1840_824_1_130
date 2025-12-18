@@ -56,6 +56,11 @@ package com.example.demo.model;
         this.claimantName = claimantName;
         this.claimantEmail = claimantEmail;
         this.claimReason = climReason;
+        this.submittedAt = submittedAt;
+        this.status = status;
+    }
+    public WarrantyClaimRecord(){
+        
     }
   
   }

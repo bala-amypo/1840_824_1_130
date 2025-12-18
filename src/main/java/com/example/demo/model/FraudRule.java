@@ -36,5 +36,11 @@ package com.example.demo.model;
         public void setActive(Boolean active){
             this.active = active;
         }
+        public FraudRule(Long id,)
+        private Long id;
+        private String ruleCode;
+        private String description;
+        private String ruleType;
+        private Boolean active;
 
     }
