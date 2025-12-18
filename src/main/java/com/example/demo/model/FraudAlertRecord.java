@@ -39,11 +39,24 @@ package com.example.demo.model;
         public void setSeverity(String severity){
             this.severity = severity;
         }
-        public Boolean getActive(){
-            return active;
+        public String getMessage(){
+            return message;
         }
-        public void setActive(Boolean active){
-            this.active = active;
+        public void setMessage(String message){
+            this.message = message;
         }
+        public LocalDateTime getAlertDate(){
+             return alertDate;
+        }
+        public void  setAlertDate(LocalDateTime alertDate){
+            this.alertDate = alertDate;
+        }
+        public Boolean getResolved(){
+            return resolved;
+        }
+        public void setResolved(Boolean resolved){
+            this.resolved = resolved;
+        }
+
 
     }
