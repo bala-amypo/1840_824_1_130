@@ -51,6 +51,8 @@ package com.example.demo.model;
             this.roles = roles;
             this.createdAt = createdAt;
         }
-
+        public User(){
+            
+        }
  
     }
