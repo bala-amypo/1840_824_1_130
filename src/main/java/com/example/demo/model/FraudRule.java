@@ -16,31 +16,19 @@ package com.example.demo.model;
             return ruleCode;
         }
         public void setRuleCode(String ruleCode){
-            this.ruleCode = serialNumber;
+            this.ruleCode = ruleCode;
         }
-        public String getOwnerName(){
-            return ownerName;
+        public String getDescription(){
+            return description;
         }
-        public void setOwnerName(String ownerName){
-            this.ownerName = ownerName;
+        public void setDescription(String description){
+            this.description = description;
         }
-        public String getOwnerEmail(){
-            return ownerEmail;
+        public String getRuleType(){
+            return ruleType;
         }
-        public void setOwnerEmail(String ownerEmail){
-            this.ownerEmail = ownerEmail;
-        }
-        public LocalDate getPurchaseDate(){
-            return purchaseDate;
-        }
-        public void setPurchaseDate(LocalDate purchaseDate){
-            this.purchaseDate = purchaseDate;
-        }
-        public LocalDate getwarrantyExpiration(){
-            return warrantyExpiration;
-        }
-        public void setWarrantyExpiration(LocalDate warrantyExpiration){
-            this.warrantyExpiration = warrantyExpiration;
+        public void setRuleType(String ruleType){
+            this.ruleType = ruleType;
         }
         public Boolean getActive(){
             return active;
