@@ -2,9 +2,11 @@ package com.example.demo.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import java.time.LocalDateTime;
+import java.time.LocalDate;
     @Entity
     public class DeviceOwnershipRecord{
         @Id
+        @GeneratedValue
         private Long id;
         private String serialNumber;
         private String ownerName;
