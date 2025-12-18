@@ -1,66 +1,66 @@
-package com.example.demo.model;
-  public class WarrantyClaimRecord{
-    private Long id;
-    private String serialNumber;
-    private String claimantName;
-    private String claimantEmail;
-    private String claimReason;
-    private LocalDateTime submittedAt;
-    private String status;
+// package com.example.demo.model;
+//   public class WarrantyClaimRecord{
+//     private Long id;
+//     private String serialNumber;
+//     private String claimantName;
+//     private String claimantEmail;
+//     private String claimReason;
+//     private LocalDateTime submittedAt;
+//     private String status;
 
-    public Long getId(){
-        return id;
-    }
-    public void setId(Long id){
-        this.id = id;
-    }
-    public String getSerialNumber(){
-        return serialNumber;
-    }
-    public void setSerialNumber(String serialNumber){
-        this.serialNumber = serialNumber;
-    }
-    public String getClaimantName(){
-        return claimantName;
-    }
-    public void setClaimantName(String claimantName){
-        this.claimantName = claimantName;
-    }
-    public String getClaimantEmail(){
-        return claimantEmail;
-    }
-    public void setclaimantEmail(String claimantEmail){
-        this.claimantEmail = claimantEmail;
-    }
-    public String getClaimReason(){
-        return claimReason;
-    }
-    public void setClaimantReason(String claimReason){
-        this.claimReason = climReason;
-    }
-    public LocalDateTime getsubmittedAt(){
-        return submittedAt;
-    }
-    public void  setSubmittedAt(LocalDateTime submittedAt){
-        this.submittedAt = submittedAt;
-    }
-    public String getStatus(){
-        return status;
-    }
-    public void setStatus(String status){
-        this.status = status;
-    }
-    public WarrantyClaimRecord(Long id,String serialNumber,String claimantName,String claimantEmail,String claimReason,LocalDateTime submittedAt,String status){
-        this.id = id;
-        this.serialNumber = serialNumber;
-        this.claimantName = claimantName;
-        this.claimantEmail = claimantEmail;
-        this.claimReason = climReason;
-        this.submittedAt = submittedAt;
-        this.status = status;
-    }
-    public WarrantyClaimRecord(){
+//     public Long getId(){
+//         return id;
+//     }
+//     public void setId(Long id){
+//         this.id = id;
+//     }
+//     public String getSerialNumber(){
+//         return serialNumber;
+//     }
+//     public void setSerialNumber(String serialNumber){
+//         this.serialNumber = serialNumber;
+//     }
+//     public String getClaimantName(){
+//         return claimantName;
+//     }
+//     public void setClaimantName(String claimantName){
+//         this.claimantName = claimantName;
+//     }
+//     public String getClaimantEmail(){
+//         return claimantEmail;
+//     }
+//     public void setclaimantEmail(String claimantEmail){
+//         this.claimantEmail = claimantEmail;
+//     }
+//     public String getClaimReason(){
+//         return claimReason;
+//     }
+//     public void setClaimantReason(String claimReason){
+//         this.claimReason = climReason;
+//     }
+//     public LocalDateTime getsubmittedAt(){
+//         return submittedAt;
+//     }
+//     public void  setSubmittedAt(LocalDateTime submittedAt){
+//         this.submittedAt = submittedAt;
+//     }
+//     public String getStatus(){
+//         return status;
+//     }
+//     public void setStatus(String status){
+//         this.status = status;
+//     }
+//     public WarrantyClaimRecord(Long id,String serialNumber,String claimantName,String claimantEmail,String claimReason,LocalDateTime submittedAt,String status){
+//         this.id = id;
+//         this.serialNumber = serialNumber;
+//         this.claimantName = claimantName;
+//         this.claimantEmail = claimantEmail;
+//         this.claimReason = climReason;
+//         this.submittedAt = submittedAt;
+//         this.status = status;
+//     }
+//     public WarrantyClaimRecord(){
         
-    }
+//     }
   
-  }
+//   }
