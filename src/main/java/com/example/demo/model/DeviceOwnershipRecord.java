@@ -50,5 +50,15 @@ package com.example.demo.model;
         public void setActive(Boolean active){
             this.active = active;
         }
+        public  DeviceOwnershipRecord{
+        private Long id;
+        private String serialNumber;
+        private String ownerName;
+        private String ownerEmail;
+        private LocalDate purchaseDate;
+        private LocalDate warrantyExpiration;
+        private Boolean active;
 
     }
+
+    
