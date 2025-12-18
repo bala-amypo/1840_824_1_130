@@ -34,7 +34,7 @@ package com.example.demo.model;
             return details;
         }
         public void setDetails(String details){
-            this.details = active;
+            this.details = details;
         }
 
     }
