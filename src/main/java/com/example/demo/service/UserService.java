@@ -6,5 +6,6 @@ public interface UserService
 
 
 {
-    public 
+    public User registerUser(User req);
+    public User loginUser(User req);
 }
