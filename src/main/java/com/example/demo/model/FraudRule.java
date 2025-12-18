@@ -6,7 +6,9 @@ import java.time.LocalDate;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
     @Entity
-    public class FraudRule{
+    public class FraudRule {
+        @Id
+        @GeneratedValue(strategy=GenerationType.IDENTITY)
         private Long id;
         private String ruleCode;
         private String description;
@@ -53,8 +55,4 @@ import jakarta.persistence.GenerationType;
         public FraudRule(){
 
         }
-
-        
-
-
- }
+        }
