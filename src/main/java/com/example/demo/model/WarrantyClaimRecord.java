@@ -18,6 +18,13 @@ package com.example.demo.model;
         return serialNumber;
     }
     public void setSerialNumber(String serialNumber){
-        this.serialNumber = 
+        this.serialNumber = serialNumber;
     }
+    public String getClaimantName(){
+        return claimantName;
+    }
+    public void setClaimantName(String claimantName){
+        this.claimantName = claimantName;
+    }
+    public String getClaimant
   }
