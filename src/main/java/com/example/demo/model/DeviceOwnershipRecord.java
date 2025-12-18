@@ -27,7 +27,17 @@ package com.example.demo.model;
             this.ownerName = ownerName;
         }
         public String getOwnerEmail(){
-            return 
+            return ownerEmail;
         }
+        public void setOwnerEmail(String ownerEmail){
+            this.ownerEmail = ownerEmail;
+        }
+        public LocalDate getPurchaseDate(){
+            return purchaseDate;
+        }
+        public void setPurchaseDate(LocalDate purchaseDate){
+            this.purchaseDate = purchaseDate;
+        }
+        public LocalDate getwarranty
 
     }
