@@ -15,29 +15,29 @@ package com.example.demo.model;
         public void setId(Long id){
             this.id = id;
         }
-         public Long get(){
-            return id;
+         public Long getClaimId(){
+            return claimid;
         }
-        public void setId(Long id){
-            this.id = id;
+        public void setClaimId(Long claimId){
+            this.claimId = claimId;
         }
-        public String getRuleCode(){
-            return ruleCode;
+        public String getSerialNumber(){
+            return serialNumber;
         }
-        public void setRuleCode(String ruleCode){
-            this.ruleCode = ruleCode;
+        public void setSerialNumber(String serialNumber){
+            this.serialNumber = serialNumber;
         }
-        public String getDescription(){
-            return description;
+        public String getAlertType(){
+            return alertType;
         }
-        public void setDescription(String description){
-            this.description = description;
+        public void setAlertType(String alertType){
+            this.alertType = alertType;
         }
-        public String getRuleType(){
-            return ruleType;
+        public String getSeverity(){
+            return severity;
         }
-        public void setRuleType(String ruleType){
-            this.ruleType = ruleType;
+        public void setSeverity(String severity){
+            this.severity = severity;
         }
         public Boolean getActive(){
             return active;
