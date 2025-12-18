@@ -18,35 +18,23 @@ package com.example.demo.model;
         public void setSerialNumber(String serialNumber){
             this.serialNumber = serialNumber;
         }
-        public String setReportedBy(){
+        public String getReportedBy(){
             return reportedBy
         }
-        public void (String ownerName){
-            this.ownerName = ownerName;
+        public void setReportedBy (String reportedBy){
+            this.reportedBy = reportedBy;
         }
-        public String getOwnerEmail(){
-            return ownerEmail;
+        public LocalDateTime getReportDate(){
+            return reportDate;
         }
-        public void setOwnerEmail(String ownerEmail){
-            this.ownerEmail = ownerEmail;
+        public void setReportDate(LocalDateTime reportDate){
+            this.reportDate = reportDate;
         }
-        public LocalDate getPurchaseDate(){
-            return purchaseDate;
+        public String getDetails(){
+            return details;
         }
-        public void setPurchaseDate(LocalDate purchaseDate){
-            this.purchaseDate = purchaseDate;
-        }
-        public LocalDate getwarrantyExpiration(){
-            return warrantyExpiration;
-        }
-        public void setWarrantyExpiration(LocalDate warrantyExpiration){
-            this.warrantyExpiration = warrantyExpiration;
-        }
-        public Boolean getActive(){
-            return active;
-        }
-        public void setActive(Boolean active){
-            this.active = active;
+        public void setDetails(String details){
+            this.details = active;
         }
 
     }
