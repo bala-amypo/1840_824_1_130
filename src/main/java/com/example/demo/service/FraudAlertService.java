@@ -8,7 +8,7 @@ public interface FraudAlertService
 {
     public FraudAlert createAlert(FraudAlert alert);
     public FraudAlert resolveAlert(FraudAlert id);
-    public FraudAlert getAlertsBySerial(serialNumber);
-    public FraudAlert getAlertsBySerial(FraudAlert ruleCode);
-    public FraudAlert getAllRules();
+    public FraudAlert getAlertsBySerial(FraudAlert serialNumber);
+    public FraudAlert getAlertsByClaim(FraudAlert claimId);
+    public FraudAlert getAllAlerts();
 }
