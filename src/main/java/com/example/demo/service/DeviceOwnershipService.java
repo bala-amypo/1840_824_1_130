@@ -1,13 +1,10 @@
 package com.example.demo.service;
 import jakarta.persistence.Service;
-import com.example.demo.model.DeviceOwnership;
+import com.example.demo.model.DeviceOwnershipRecord;
 
-public interface DeviceOwnershipService
-
-
-{
-     DeviceOwnership registerDevice(DeviceOwnership device);
-     DeviceOwnership getBySerial(DeviceOwnership serialNumber);
-     DeviceOwnership getAllDevices();
-     DeviceOwnership updateDeviceStatus(DeviceOwnership id,active);
+public interface DeviceOwnershipService{
+     DeviceOwnershipRecord registerDevice(DeviceOwnershipRecord device);
+     DeviceOwnershipRecord getBySerial(String serialNumber);
+     List<DeviceOwnershipRecord> getAllDevices();
+     DeviceOwnershipRecord updateDeviceStatus(Long id,boolean active);
 }
