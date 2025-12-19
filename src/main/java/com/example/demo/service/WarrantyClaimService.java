@@ -1,6 +1,6 @@
 package com.example.demo.service;
 import jakarta.persistence.Service;
-import com.example.demo.model.WarrantyClaim;
+import com.example.demo.model.WarrantyClaimRecord;
 
 public interface WarrantyClaimService
 

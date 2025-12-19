@@ -3,14 +3,15 @@ package com.example.demo.service;
 
 
  
-import com.example.demo.model.StolenDevice;
+import com.example.demo.model.StolenDeviceRecord;
 
 public interface StolenDeviceService
 
 
 {
-    public StolenDevice reportStolen(StolenDevice report);
-    public StolenDevice getReportsBySerial(StolenDevice serialNumber);
-    public StolenDevice getReportById(StolenDevice id);
-    public StolenDevice getAllReports();
+   
 }
+//StolenDevice reportStolen(StolenDevice report);
+//StolenDevice getReportsBySerial(StolenDevice serialNumber);
+//StolenDevice getReportById(StolenDevice id);
+//StolenDevice getAllReports();
