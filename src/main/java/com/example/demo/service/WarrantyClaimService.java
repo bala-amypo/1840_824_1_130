@@ -6,10 +6,10 @@ import java.util.List;
 public interface WarrantyClaimService{
 
 
-    WarrantyClaimRecord updateClaimStatus(WarrantyClaim claimId,status);
-    WarrantyClaimRecord updateClaimStatus(WarrantyClaim claimId,status);
-    WarrantyClaimRecord getClaimById(WarrantyClaim id);
-    WarrantyClaimRecord getClaimBySerial(WarrantyClaim serialNumber);
+    WarrantyClaimRecord submitClaim(WarrantyClaimRecord claim);
+    WarrantyClaimRecord updateStatus(Long id,string status);
+    WarrantyClaimRecord getClaimById(WarrantyClaimRecord id);
+    WarrantyClaimRecord getClaimBySerial(WarrantyClaimRecord serialNumber);
     WarrantyClaimRecord getAllClaims();
    
 }
