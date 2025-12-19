@@ -6,6 +6,6 @@ public interface WarrantyClaimService
 
 
 {
-    public WarrantyClaim registerUser(WarrantyClaim req);
-    public WarrantyClaim loginUser(WarrantyClaim req);
+    public WarrantyClaim updateClaimStatus(WarrantyClaim claimId,status);
+    public WarrantyClaim getClaimById(WarrantyClaim id);
 }
