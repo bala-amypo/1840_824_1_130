@@ -4,8 +4,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.example.demo.model.FraudRule;
 
 public interface FraudRuleRepository extends JpaRepository<FraudRule,Long>{
-    
+
     boolean existBySerialNumber(String serialNumber);
-    Optional<FraudAlertRecord>findBySerialNumber(String serialNumber);
+    Optional<FraudRule>findBySerialNumber(String serialNumber);
 
 }
