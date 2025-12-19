@@ -7,7 +7,7 @@ public interface StolenDeviceService
 
 {
     public StolenDevice reportStolen(StolenDevice report);
-    public StolenDevice getBySerial(StolenDevice serialNumber);
-    public StolenDevice getAllDevices();
-    public StolenDevice updateDeviceStatus(StolenDevice id,active);
+    public StolenDevice getReportsBySerial(StolenDevice serialNumber);
+    public StolenDevice getReportById(StolenDevice id);
+    public StolenDevice getAllReports();
 }
