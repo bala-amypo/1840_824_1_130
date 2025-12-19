@@ -8,7 +8,7 @@ public interface WarrantyClaimService
 {
    
 }
-    // public WarrantyClaim updateClaimStatus(WarrantyClaim claimId,status);
-    // public WarrantyClaim getClaimById(WarrantyClaim id);
-    // public WarrantyClaim getClaimBySerial(WarrantyClaim serialNumber);
-    // public WarrantyClaim getAllClaims();
+    //  WarrantyClaim updateClaimStatus(WarrantyClaim claimId,status);
+    //  WarrantyClaim getClaimById(WarrantyClaim id);
+    //  WarrantyClaim getClaimBySerial(WarrantyClaim serialNumber);
+    //  WarrantyClaim getAllClaims();
