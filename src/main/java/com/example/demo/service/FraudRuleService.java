@@ -6,9 +6,10 @@ public interface FraudRuleService
 
 
 {
-    FraudRule createRule(FraudRule rule);
-    FraudRule updateRule(FraudRule id,updatedRule);
-    FraudRule getActiveRules();
-    FraudRule getRuleByCode(FraudRule ruleCode);
-     FraudRule getAllRules();
+    
 }
+// FraudRule createRule(FraudRule rule);
+// FraudRule updateRule(FraudRule id,updatedRule);
+// FraudRule getActiveRules();
+// FraudRule getRuleByCode(FraudRule ruleCode);
+// FraudRule getAllRules();
