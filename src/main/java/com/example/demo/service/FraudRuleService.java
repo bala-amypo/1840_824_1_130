@@ -1,13 +1,13 @@
 package com.example.demo.service;
 import jakarta.persistence.Service;
-import com.example.demo.model.Fraud;
+import com.example.demo.model.FraudRule;
 
-public interface DeviceOwnershipService
+public interface FraudRuleService
 
 
 {
-    public DeviceOwnership registerDevice(DeviceOwnership device);
-    public DeviceOwnership getBySerial(DeviceOwnership serialNumber);
-    public DeviceOwnership getAllDevices();
-    public DeviceOwnership updateDeviceStatus(DeviceOwnership id,active);
+    public FraudRule createRule(FraudRule rule);
+    public FraudRule updateRule(FraudRule id,updatedRule);
+    public FraudRule getAllDevices();
+    public FraudRule updateDeviceStatus(FraudRule id,active);
 }
