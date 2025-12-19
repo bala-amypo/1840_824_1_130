@@ -2,7 +2,7 @@ package com.example.demo.service;
 
 
 
-import com.example.demo.model.FraudAlert;
+import com.example.demo.model.FraudAlertRecord;
 
 public interface FraudAlertService
 
