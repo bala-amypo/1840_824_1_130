@@ -1,14 +1,14 @@
 package com.example.demo.service;
 import jakarta.persistence.Service;
-import com.example.demo.model.FraudRule;
+import com.example.demo.model.FraudAlert;
 
-public interface FraudRuleService
+public interface FraudAlertService
 
 
 {
-    public FraudRule createRule(FraudRule rule);
-    public FraudRule updateRule(FraudRule id,updatedRule);
-    public FraudRule getActiveRules();
-    public FraudRule getRuleByCode(FraudRule ruleCode);
-    public FraudRule getAllRules();
+    public FraudAlert createAlert(FraudAlert alert);
+    public FraudAlert resolveAlert(FraudAlert id);
+    public FraudAlert getAlertsBySerial(serialNumber);
+    public FraudAlert getAlertsBySerial(FraudAlert ruleCode);
+    public FraudAlert getAllRules();
 }
