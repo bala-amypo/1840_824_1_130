@@ -6,7 +6,7 @@ import java.util.Optional;
 
 public interface FraudRuleRepository extends JpaRepository<FraudRule,Long>{
 
-    boolean existBySerialNumber(String serialNumber);
+    List<FraudRule>findByActiveTrue();
     Optional<FraudRule>findBySerialNumber(String serialNumber);
 
 }
