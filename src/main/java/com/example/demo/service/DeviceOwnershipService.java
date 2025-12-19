@@ -6,8 +6,8 @@ public interface DeviceOwnershipService
 
 
 {
-    public DeviceOwnership registerDevice(DeviceOwnership device);
-    public DeviceOwnership getBySerial(DeviceOwnership serialNumber);
-    public DeviceOwnership getAllDevices();
-    public DeviceOwnership updateDeviceStatus(DeviceOwnership id,active);
+     DeviceOwnership registerDevice(DeviceOwnership device);
+     DeviceOwnership getBySerial(DeviceOwnership serialNumber);
+     DeviceOwnership getAllDevices();
+     DeviceOwnership updateDeviceStatus(DeviceOwnership id,active);
 }
