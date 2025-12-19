@@ -3,13 +3,13 @@ package com.example.demo.service;
 import com.example.demo.model.WarrantyClaimRecord;
 import java.util.List;
 
-public interface WarrantyClaimService
+public interface WarrantyClaimService{
 
 
-{
+    WarrantyClaimRecord updateClaimStatus(WarrantyClaim claimId,status);
+    WarrantyClaimRecord updateClaimStatus(WarrantyClaim claimId,status);
+    WarrantyClaimRecord getClaimById(WarrantyClaim id);
+    WarrantyClaimRecord getClaimBySerial(WarrantyClaim serialNumber);
+    WarrantyClaimRecord getAllClaims();
    
 }
-    //  WarrantyClaim updateClaimStatus(WarrantyClaim claimId,status);
-    //  WarrantyClaim getClaimById(WarrantyClaim id);
-    //  WarrantyClaim getClaimBySerial(WarrantyClaim serialNumber);
-    //  WarrantyClaim getAllClaims();
