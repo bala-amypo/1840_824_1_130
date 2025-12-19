@@ -5,14 +5,12 @@ package com.example.demo.service;
 import com.example.demo.model.FraudAlertRecord;
 import java.util.List;
 
-public interface FraudAlertService
-
-
-{
+public interface FraudAlertService{
+    FraudAlertRecord createAlert(FraudAlertRecord alert);
+    FraudAlertRecord resolveAlert(Long id);
+    FraudAlertRecord getAlertsBySerial(String serialNumber);
+    FraudAlertRecord getAlertsByClaim(Long claimId);
+    FraudAlertRecord getAllAlerts();
    } 
    
-    //FraudAlert createAlert(FraudAlert alert);
-    //FraudAlert resolveAlert(FraudAlert id);
-    //FraudAlert getAlertsBySerial(FraudAlert serialNumber);
-    //FraudAlert getAlertsByClaim(FraudAlert claimId);
-    //FraudAlert getAllAlerts();
+   
