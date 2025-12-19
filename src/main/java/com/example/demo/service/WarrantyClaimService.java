@@ -7,7 +7,7 @@ public interface WarrantyClaimService{
 
 
     WarrantyClaimRecord submitClaim(WarrantyClaimRecord claim);
-    WarrantyClaimRecord updateStatus(Long id,string status);
+    WarrantyClaimRecord updateStatus(Long id,String status);
     WarrantyClaimRecord getClaimById(Long id);
     List<WarrantyClaimRecord> getClaimBySerial(String serialNumber);
     List<WarrantyClaimRecord> getAllClaims();
