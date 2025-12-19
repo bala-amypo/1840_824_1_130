@@ -1,5 +1,7 @@
 package com.example.demo.service;
-import jakarta.persistence.Service;
+
+
+
 import com.example.demo.model.FraudAlert;
 
 public interface FraudAlertService
