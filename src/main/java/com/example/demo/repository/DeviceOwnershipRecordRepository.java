@@ -9,6 +9,6 @@ public interface DeviceOwnershipRecordRepository extends JpaRepository<DeviceOwn
 
     boolean existBySerialNumber(String serialNumber);
 
-    Optional<DeviceOwnershipRecord> findBySerialNumber(String serialNumber)
+    Optional<DeviceOwnershipRecord>findBySerialNumber(String serialNumber);
     
 }
