@@ -17,16 +17,6 @@ return "dummy-jwt-token-for-" + email;
 
 
 
-
-<dependency>
-<groupId>org.springframework.boot</groupId>
-<artifactId>spring-boot-starter-security</artifactId>
-</dependency>
-
-
-
-
-
 public interface DeviceOwnershipRecordRepository
 extends JpaRepository<DeviceOwnershipRecord, Long> {
 

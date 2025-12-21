@@ -5,10 +5,7 @@ import com.example.demo.model.DeviceOwnershipRecord;
 
 import java.util.Optional;
 
-public interface DeviceOwnershipRecordRepository extends JpaRepository<DeviceOwnershipRecord,Long>{
+public interface DeviceOwnershipRecordRepository extends JpaRepository<DeviceOwnershipRecord, Long> {
 
-    boolean existBySerialNumber(String serialNumber);
-
-    Optional<DeviceOwnershipRecord>findBySerialNumber(String serialNumber);
-    
+boolean existsBySerialNumber(String serialNumber);
 }
