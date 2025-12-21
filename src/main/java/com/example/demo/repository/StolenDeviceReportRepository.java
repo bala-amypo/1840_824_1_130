@@ -5,9 +5,7 @@ import com.example.demo.model.StolenDeviceReport;
 import java.util.Optional;
 import java.util.List;
 
-public interface StolenDeviceReportRepository extends JpaRepository<StolenDeviceReport,Long>{
+public interface StolenDeviceReportRepository extends JpaRepository<StolenDeviceReport, Long> {
 
-    boolean existBySerialNumber(String serialNumber);
-    Optional<StolenDeviceReport>findBySerialNumber(String serialNumber);
-    
+boolean existsBySerialNumber(String serialNumber);
 }

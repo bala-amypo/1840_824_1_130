@@ -14,31 +14,6 @@ return "dummy-jwt-token-for-" + email;
 }
 
 
-
-
-
-public interface DeviceOwnershipRecordRepository
-extends JpaRepository<DeviceOwnershipRecord, Long> {
-
-boolean existsBySerialNumber(String serialNumber);
-}
-
-
-
-
-
-
-public interface StolenDeviceReportRepository
-extends JpaRepository<StolenDeviceReport, Long> {
-
-boolean existsBySerialNumber(String serialNumber);
-}
-
-
-
-
-
-
 package com.example.demo.service;
 
 import com.example.demo.model.FraudAlertRecord;
