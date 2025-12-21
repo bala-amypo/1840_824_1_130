@@ -1,7 +1,7 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.dto.AuthResponse;
-import com.example.demo.dto.LoginRequest;
+import com.example.demo.dto.AuthRequest;
 import com.example.demo.dto.RegisterRequest;
 import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
@@ -53,7 +53,7 @@ return new AuthResponse(token);
 }
 
 @Override
-public AuthResponse loginUser(LoginRequest request) {
+public AuthResponse loginUser(AuthRequest request) {
 
 User user = userRepository.findByEmail(request.getEmail())
 .orElseThrow(() -> new NoSuchElementException("User not found"));
