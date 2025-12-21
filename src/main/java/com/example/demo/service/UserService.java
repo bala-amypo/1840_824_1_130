@@ -1,13 +1,12 @@
 package com.example.demo.service;
 
+import com.example.demo.dto.AuthResponse;
+import com.example.demo.dto.AuthRequest;
+import com.example.demo.dto.RegisterRequest;
 
-import com.example.demo.model.User;
-import java.util.List;
+public interface UserService {
+    
+    AuthResponse registerUser(RegisterRequest request);
 
-public interface UserService
-
-
-{
-    public User registerUser(User req);
-    public User loginUser(User req);
+    AuthResponse loginUser(AuthRequest request);
 }
