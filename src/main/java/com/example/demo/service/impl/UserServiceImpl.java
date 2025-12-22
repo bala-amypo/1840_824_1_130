@@ -1,7 +1,7 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.dto.AuthResponse;
-import com.example.demo.dto.AuthRequest;
+import com.example.demo.dto.LoginRequest;
 import com.example.demo.dto.RegisterRequest;
 import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
@@ -17,15 +17,14 @@ public class UserServiceImpl implements UserService {
 private final UserRepository userRepository;
 private final JwtTokenProvider jwtTokenProvider;
 
-// REQUIRED constructor (order matters for tests)
+// Constructor injection (REQUIRED)
 public UserServiceImpl(UserRepository userRepository,
-PasswordEncoder passwordEncoder,
 JwtTokenProvider jwtTokenProvider) {
 this.userRepository = userRepository;
-this.passwordEncoder = passwordEncoder;
 this.jwtTokenProvider = jwtTokenProvider;
 }
 
+// ================= REGISTER =================
 @Override
 public AuthResponse registerUser(RegisterRequest request) {
 
@@ -37,26 +36,30 @@ User user = new User();
 user.setName(request.getName());
 user.setEmail(request.getEmail());
 user.setRoles(request.getRoles());
-user.setPassword(passwordEncoder.encode(request.getPassword()));
 
-User saved = userRepository.save(user);
+// ✅ Plain text password (NO security dependency)
+user.setPassword(request.getPassword());
+
+User savedUser = userRepository.save(user);
 
 String token = jwtTokenProvider.createToken(
-saved.getId(),
-saved.getEmail(),
-saved.getRoles()
+savedUser.getId(),
+savedUser.getEmail(),
+savedUser.getRoles()
 );
 
 return new AuthResponse(token);
 }
 
+// ================= LOGIN =================
 @Override
-public AuthResponse loginUser(AuthRequest request) {
+public AuthResponse loginUser(LoginRequest request) {
 
 User user = userRepository.findByEmail(request.getEmail())
 .orElseThrow(() -> new NoSuchElementException("User not found"));
 
-if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
+// ✅ Plain text password comparison
+if (!user.getPassword().equals(request.getPassword())) {
 throw new IllegalArgumentException("Invalid credentials");
 }
 
