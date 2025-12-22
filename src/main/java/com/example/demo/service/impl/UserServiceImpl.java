@@ -53,7 +53,7 @@ return new AuthResponse(token);
 
 // ================= LOGIN =================
 @Override
-public AuthResponse loginUser(LoginRequest request) {
+public AuthResponse loginUser(AuthRequest request) {
 
 User user = userRepository.findByEmail(request.getEmail())
 .orElseThrow(() -> new NoSuchElementException("User not found"));
