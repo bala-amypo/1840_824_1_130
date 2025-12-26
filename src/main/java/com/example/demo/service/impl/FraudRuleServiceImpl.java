@@ -25,16 +25,17 @@ return repository.save(rule);
 
 @Override
 public FraudRule updateRule(Long id, FraudRule updatedRule) {
-FraudRule existing = repository.findById(id)
-.orElseThrow(() -> new NoSuchElementException("Fraud rule not found"));
+    FraudRule existing = repository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Rule not found"));
 
-existing.setRuleCode(updatedRule.getRuleCode());
-existing.setDescription(updatedRule.getDescription());
-existing.setRuleType(updatedRule.getRuleType());
-existing.setActive(updatedRule.getActive());
+    existing.setRuleName(updatedRule.getRuleName());
+    existing.setDescription(updatedRule.getDescription());
+    existing.setSeverity(updatedRule.getSeverity());
+    existing.setActive(updatedRule.getActive());
 
-return repository.save(existing);
+    return repository.save(existing);
 }
+
 
 @Override
 public List<FraudRule> getActiveRules() {
