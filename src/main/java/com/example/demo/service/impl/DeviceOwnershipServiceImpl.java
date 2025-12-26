@@ -3,8 +3,12 @@ package com.example.demo.service.impl;
 import com.example.demo.model.DeviceOwnershipRecord;
 import com.example.demo.repository.DeviceOwnershipRecordRepository;
 import com.example.demo.service.DeviceOwnershipService;
-import java.util.List;
+import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.NoSuchElementException;
+
+@Service
 public class DeviceOwnershipServiceImpl implements DeviceOwnershipService {
 
     private final DeviceOwnershipRecordRepository repo;
@@ -14,15 +18,16 @@ public class DeviceOwnershipServiceImpl implements DeviceOwnershipService {
     }
 
     @Override
-    public DeviceOwnershipRecord registerDevice(DeviceOwnershipRecord device) {
-        if (repo.existsBySerialNumber(device.getSerialNumber()))
-            throw new IllegalArgumentException("Duplicate serial");
-        return repo.save(device);
+    public DeviceOwnershipRecord registerDevice(DeviceOwnershipRecord record) {
+        if (repo.existsBySerialNumber(record.getSerialNumber())) {
+            throw new IllegalArgumentException("Device already exists");
+        }
+        return repo.save(record);
     }
 
     @Override
-    public DeviceOwnershipRecord getBySerial(String serialNumber) {
-        return repo.findBySerialNumber(serialNumber);
+    public DeviceOwnershipRecord getBySerial(String serial) {
+        return repo.findBySerialNumber(serial);
     }
 
     @Override
@@ -33,7 +38,7 @@ public class DeviceOwnershipServiceImpl implements DeviceOwnershipService {
     @Override
     public DeviceOwnershipRecord updateDeviceStatus(Long id, boolean active) {
         DeviceOwnershipRecord d = repo.findById(id)
-            .orElseThrow(() -> new java.util.NoSuchElementException("Device not found"));
+                .orElseThrow(() -> new NoSuchElementException("Device not found"));
         d.setActive(active);
         return repo.save(d);
     }
