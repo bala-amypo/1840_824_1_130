@@ -12,7 +12,6 @@ public class DeviceOwnershipRecord {
 
     @Column(unique=true)
     private String serialNumber;
-
     private String ownerName;
     private String ownerEmail;
     private LocalDate purchaseDate;

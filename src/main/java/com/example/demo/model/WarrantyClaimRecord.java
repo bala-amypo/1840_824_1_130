@@ -9,6 +9,7 @@ public class WarrantyClaimRecord {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String serialNumber;
     private String claimantName;
     private String claimantEmail;
