@@ -3,13 +3,13 @@ package com.example.demo.security;
 import java.util.Set;
 
 /**
- * Compile-safe stub for JwtTokenProvider.
- * Does NOT use real JWT because no JWT library is in pom.xml.
+ * Stubbed token provider — returns a constant string
+ * since JWT library isn’t on the classpath.
  */
 public class JwtTokenProvider {
 
     public String createToken(Long userId, String email, Set<String> roles) {
-        // Return a dummy token string
+        // Stub: return a placeholder token
         return "DUMMY_TOKEN";
     }
 }
