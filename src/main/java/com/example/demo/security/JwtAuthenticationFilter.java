@@ -1,8 +1,9 @@
 package com.example.demo.security;
 
 /**
- * Placeholder class.
- * No JWT filtering implemented.
+ * Compile-safe stub for JwtAuthenticationFilter.
+ * No real filtering logic here — Spring Security is not available.
  */
 public class JwtAuthenticationFilter {
+    // Empty stub
 }
