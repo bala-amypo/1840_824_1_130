@@ -1,18 +1,43 @@
 package com.example.demo.security;
 
-import java.util.Set;
+import io.jsonwebtoken.*;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-/**
- * Compile-safe stub for JwtTokenProvider.
- * Does not actually perform JWT operations because your pom.xml
- * does not include Spring Security / JWT libraries.
- */
+import java.util.Date;
+import java.util.Set;
+
 @Component
 public class JwtTokenProvider {
 
+    @Value("${jwt.secret}")
+    private String secret;
+
+    @Value("${jwt.expiration}")
+    private long expiration;
+
     public String createToken(Long userId, String email, Set<String> roles) {
-        // Return a dummy string (or “fake token”) — adjust as needed
-        return "DUMMY_TOKEN";
+        Claims claims = Jwts.claims().setSubject(email);
+        claims.put("roles", roles);
+
+        return Jwts.builder()
+                .setClaims(claims)
+                .setExpiration(new Date(System.currentTimeMillis() + expiration))
+                .signWith(SignatureAlgorithm.HS256, secret)
+                .compact();
+    }
+
+    public boolean validateToken(String token) {
+        try {
+            Jwts.parser().setSigningKey(secret).parseClaimsJws(token);
+            return true;
+        } catch (JwtException | IllegalArgumentException e) {
+            return false;
+        }
+    }
+
+    public String getEmail(String token) {
+        return Jwts.parser().setSigningKey(secret)
+                .parseClaimsJws(token).getBody().getSubject();
     }
 }
