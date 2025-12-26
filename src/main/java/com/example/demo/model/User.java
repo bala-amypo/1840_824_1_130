@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
+import java.util.Set;
 
 @Entity
 public class User {
@@ -8,10 +9,16 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
-    @Column(unique=true)
+
+    @Column(unique = true)
     private String email;
+
     private String password;
+
+    @ElementCollection
+    private Set<String> roles;
 
     public Long getId() { return id; }
     public String getName() { return name; }
@@ -20,4 +27,6 @@ public class User {
     public void setEmail(String email) { this.email = email; }
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }
+    public Set<String> getRoles() { return roles; }
+    public void setRoles(Set<String> roles) { this.roles = roles; }
 }
