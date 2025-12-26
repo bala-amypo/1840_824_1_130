@@ -7,5 +7,9 @@ public class RegisterRequest {
     private String email;
     private String password;
     private Set<String> roles;
-    // getters / setters
+
+    public String getName() { return name; }
+    public String getEmail() { return email; }
+    public String getPassword() { return password; }
+    public Set<String> getRoles() { return roles; }
 }

@@ -3,5 +3,7 @@ package com.example.demo.dto;
 public class AuthRequest {
     private String email;
     private String password;
-    // getters / setters
+
+    public String getEmail() { return email; }
+    public String getPassword() { return password; }
 }
