@@ -38,7 +38,8 @@ FraudAlertRecord alert = new FraudAlertRecord();
 alert.setSerialNumber(claim.getSerialNumber());
 alert.setAlertType("STOLEN_DEVICE");
 alert.setSeverity("HIGH");
-alert.setMessage("Claim submitted for stolen device");
+alert.setDescription("Device is stolen");
+
 
 fraudAlertService.createAlert(alert);
 }
