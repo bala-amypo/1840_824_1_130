@@ -56,10 +56,9 @@ return claimRepository.save(claim);
 }
 
 @Override
-public WarrantyClaimRecord getClaimById(Long id) {
-return claimRepository.findById(id)
-.orElseThrow(() -> new NoSuchElementException("Claim not found"));
-}
+public WarrantyClaimRecord claim = repository.findById(id)
+        .orElseThrow(() -> new RuntimeException("Claim not found"));
+
 
 @Override
 public List<WarrantyClaimRecord> getClaimsBySerial(String serialNumber) {
