@@ -9,13 +9,25 @@ public class FraudAlertRecord {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private Long claimId;
     private String serialNumber;
     private String alertType;
     private String severity;
     private String message;
     private LocalDateTime alertDate = LocalDateTime.now();
-    private Boolean resolved;
+    private Boolean resolved = false;
+
+    public FraudAlertRecord() {}
+
+    public FraudAlertRecord(Long claimId, String serialNumber,
+                             String alertType, String severity, String message) {
+        this.claimId = claimId;
+        this.serialNumber = serialNumber;
+        this.alertType = alertType;
+        this.severity = severity;
+        this.message = message;
+    }
 
     public Long getId() { return id; }
     public Long getClaimId() { return claimId; }

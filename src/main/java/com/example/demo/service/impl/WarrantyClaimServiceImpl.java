@@ -1,6 +1,6 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.model.WarrantyClaimRecord;
+import com.example.demo.model.*;
 import com.example.demo.repository.*;
 import com.example.demo.service.WarrantyClaimService;
 
@@ -32,52 +32,22 @@ public class WarrantyClaimServiceImpl implements WarrantyClaimService {
     @Override
     public WarrantyClaimRecord submitClaim(WarrantyClaimRecord claim) {
 
-        // device exists?
         if (!deviceRepo.existsBySerialNumber(claim.getSerialNumber())) {
             throw new NoSuchElementException("Device not found");
         }
 
-        // stolen?
         if (stolenRepo.existsBySerialNumber(claim.getSerialNumber())) {
-            WarrantyClaimRecord saved = claimRepo.save(claim);
-            alertRepo.save(new com.example.demo.model.FraudAlertRecord(
-                    saved.getId(),
-                    claim.getSerialNumber(),
-                    "STOLEN_DEVICE",
-                    "HIGH",
-                    "Device is reported stolen"
-            ));
-            return saved;
-        }
-
-        // expired?
-        var device = deviceRepo.findBySerialNumber(claim.getSerialNumber());
-        if (device.getWarrantyExpiration() != null &&
-                device.getWarrantyExpiration().isBefore(java.time.LocalDate.now())) {
             var saved = claimRepo.save(claim);
-            alertRepo.save(new com.example.demo.model.FraudAlertRecord(
-                    saved.getId(),
-                    claim.getSerialNumber(),
-                    "WARRANTY_EXPIRED",
-                    "MEDIUM",
-                    "Warranty has expired"
-            ));
+            alertRepo.save(new FraudAlertRecord(saved.getId(), saved.getSerialNumber(),
+                    "STOLEN_DEVICE", "HIGH", "Device reported stolen"));
             return saved;
         }
 
-        // duplicate?
         if (claimRepo.existsBySerialNumberAndClaimReason(
-                claim.getSerialNumber(),
-                claim.getClaimReason()
-        )) {
+                claim.getSerialNumber(), claim.getClaimReason())) {
             var saved = claimRepo.save(claim);
-            alertRepo.save(new com.example.demo.model.FraudAlertRecord(
-                    saved.getId(),
-                    claim.getSerialNumber(),
-                    "DUPLICATE_CLAIM",
-                    "LOW",
-                    "Duplicate reason for same serial"
-            ));
+            alertRepo.save(new FraudAlertRecord(saved.getId(), saved.getSerialNumber(),
+                    "DUPLICATE_CLAIM", "LOW", "Duplicate claim"));
             return saved;
         }
 
@@ -86,16 +56,16 @@ public class WarrantyClaimServiceImpl implements WarrantyClaimService {
 
     @Override
     public WarrantyClaimRecord updateClaimStatus(Long id, String status) {
-        var c = claimRepo.findById(id)
-                .orElseThrow(() -> new NoSuchElementException("Claim not found"));
+        var c = claimRepo.findById(id).orElseThrow(
+                () -> new NoSuchElementException("Claim not found"));
         c.setStatus(status);
         return claimRepo.save(c);
     }
 
     @Override
     public WarrantyClaimRecord getClaimById(Long id) {
-        return claimRepo.findById(id)
-                .orElseThrow(() -> new NoSuchElementException("Claim not found"));
+        return claimRepo.findById(id).orElseThrow(
+                () -> new NoSuchElementException("Claim not found"));
     }
 
     @Override

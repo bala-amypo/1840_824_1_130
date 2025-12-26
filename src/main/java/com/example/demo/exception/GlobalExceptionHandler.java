@@ -1,7 +1,18 @@
 package com.example.demo.exception;
 
-public class ApiError {
-    private String message;
-    public ApiError(String message) { this.message = message; }
-    public String getMessage() { return message; }
+import org.springframework.web.bind.annotation.*;
+import java.util.NoSuchElementException;
+
+@RestControllerAdvice
+public class GlobalExceptionHandler {
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ApiError handleIllegal(IllegalArgumentException ex) {
+        return new ApiError(ex.getMessage());
+    }
+
+    @ExceptionHandler(NoSuchElementException.class)
+    public ApiError handleNotFound(NoSuchElementException ex) {
+        return new ApiError(ex.getMessage());
+    }
 }

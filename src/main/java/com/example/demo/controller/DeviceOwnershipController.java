@@ -3,7 +3,6 @@ package com.example.demo.controller;
 import com.example.demo.model.DeviceOwnershipRecord;
 import com.example.demo.service.DeviceOwnershipService;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -22,18 +21,14 @@ public class DeviceOwnershipController {
     }
 
     @PutMapping("/{id}/status")
-    public DeviceOwnershipRecord updateStatus(@PathVariable Long id, @RequestParam boolean active) {
+    public DeviceOwnershipRecord updateStatus(@PathVariable Long id,
+                                              @RequestParam boolean active) {
         return service.updateDeviceStatus(id, active);
     }
 
-    @GetMapping("/serial/{serialNumber}")
-    public DeviceOwnershipRecord getBySerial(@PathVariable String serialNumber) {
-        return service.getBySerial(serialNumber);
-    }
-
-    @GetMapping("/{id}")
-    public DeviceOwnershipRecord getById(@PathVariable Long id) {
-        return service.getBySerial(service.getBySerial(serialNumber).getSerialNumber());
+    @GetMapping("/serial/{serial}")
+    public DeviceOwnershipRecord getBySerial(@PathVariable("serial") String serial) {
+        return service.getBySerial(serial);
     }
 
     @GetMapping

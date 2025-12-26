@@ -3,7 +3,6 @@ package com.example.demo.controller;
 import com.example.demo.model.FraudRule;
 import com.example.demo.service.FraudRuleService;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -22,7 +21,8 @@ public class FraudRuleController {
     }
 
     @PutMapping("/{id}")
-    public FraudRule update(@PathVariable Long id, @RequestBody FraudRule rule) {
+    public FraudRule update(@PathVariable Long id,
+                             @RequestBody FraudRule rule) {
         return service.updateRule(id, rule);
     }
 
@@ -31,9 +31,9 @@ public class FraudRuleController {
         return service.getActiveRules();
     }
 
-    @GetMapping("/{id}")
-    public FraudRule getById(@PathVariable Long id) {
-        return service.getRuleByCode(service.getRuleByCode(ruleCode).getRuleCode());
+    @GetMapping("/{code}")
+    public FraudRule getByCode(@PathVariable("code") String code) {
+        return service.getRuleByCode(code);
     }
 
     @GetMapping

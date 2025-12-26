@@ -2,8 +2,6 @@ package com.example.demo.exception;
 
 public class ApiError {
     private String message;
-    public ApiError(String message) {
-        this.message = message;
-    }
-    // getter / setter
+    public ApiError(String message) { this.message = message; }
+    public String getMessage() { return message; }
 }

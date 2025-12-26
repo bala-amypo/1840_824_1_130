@@ -3,7 +3,6 @@ package com.example.demo.controller;
 import com.example.demo.model.FraudAlertRecord;
 import com.example.demo.service.FraudAlertService;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -26,22 +25,14 @@ public class FraudAlertController {
         return service.resolveAlert(id);
     }
 
-    @GetMapping("/serial/{serialNumber}")
-    public List<FraudAlertRecord> bySerial(@PathVariable String serialNumber) {
-        return service.getAlertsBySerial(serialNumber);
+    @GetMapping("/serial/{serial}")
+    public List<FraudAlertRecord> bySerial(@PathVariable("serial") String serial) {
+        return service.getAlertsBySerial(serial);
     }
 
     @GetMapping("/claim/{claimId}")
     public List<FraudAlertRecord> byClaim(@PathVariable Long claimId) {
         return service.getAlertsByClaim(claimId);
-    }
-
-    @GetMapping("/{id}")
-    public FraudAlertRecord getById(@PathVariable Long id) {
-        return service.getAlertsBySerial(serialNumber).stream()
-                .filter(a -> a.getId().equals(id))
-                .findFirst()
-                .orElse(null);
     }
 
     @GetMapping
