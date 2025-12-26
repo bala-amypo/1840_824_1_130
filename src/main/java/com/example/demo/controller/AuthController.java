@@ -16,6 +16,8 @@ public class AuthController {
         this.userService = userService;
     }
 
+
+
     @PostMapping("/register")
     public AuthResponse register(@RequestBody RegisterRequest request) {
         return userService.registerUser(request);
@@ -24,5 +26,15 @@ public class AuthController {
     @PostMapping("/login")
     public AuthResponse login(@RequestBody AuthRequest request) {
         return userService.loginUser(request);
+    }
+}
+
+
+public class AuthController {
+
+    private final UserService userService;
+
+    public AuthController(UserService userService) {
+        this.userService = userService;
     }
 }
