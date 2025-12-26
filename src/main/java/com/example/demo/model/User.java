@@ -6,6 +6,13 @@ import java.time.LocalDate;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import java.util.Set;
+import lombok.*;
+
+    @Builder
+    @Getter
+    @Setter
+    @AllArgsConstructor
+    @NoArgsConstructor
     @Entity
     public class User{
          @Id

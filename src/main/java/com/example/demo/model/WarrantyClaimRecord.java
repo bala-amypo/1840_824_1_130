@@ -5,6 +5,13 @@ import java.time.LocalDateTime;
 import java.time.LocalDate;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import lombok.*;
+
+    @Builder
+    @Getter
+    @Setter
+    @AllArgsConstructor
+    @NoArgsConstructor
   @Entity
   public class WarrantyClaimRecord{
     @Id

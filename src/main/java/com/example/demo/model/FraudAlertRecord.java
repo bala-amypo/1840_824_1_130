@@ -8,11 +8,10 @@ import jakarta.persistence.GenerationType;
 import lombok.*;
 
     @Builder
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-
+    @Getter
+    @Setter
+    @AllArgsConstructor
+    @NoArgsConstructor
     @Entity
     public class FraudAlertRecord{
         @Id
