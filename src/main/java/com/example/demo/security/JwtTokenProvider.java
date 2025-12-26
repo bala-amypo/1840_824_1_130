@@ -1,15 +1,18 @@
 package com.example.demo.security;
 
 import java.util.Set;
+import org.springframework.stereotype.Component;
 
 /**
- * Stubbed token provider — returns a constant string
- * since JWT library isn’t on the classpath.
+ * Compile-safe stub for JwtTokenProvider.
+ * Does not actually perform JWT operations because your pom.xml
+ * does not include Spring Security / JWT libraries.
  */
+@Component
 public class JwtTokenProvider {
 
     public String createToken(Long userId, String email, Set<String> roles) {
-        // Stub: return a placeholder token
+        // Return a dummy string (or “fake token”) — adjust as needed
         return "DUMMY_TOKEN";
     }
 }
