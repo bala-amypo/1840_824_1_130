@@ -1,14 +1,9 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
-import lombok.*;
-
 import java.time.LocalDateTime;
 
 @Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class WarrantyClaimRecord {
 
     @Id
@@ -16,10 +11,17 @@ public class WarrantyClaimRecord {
     private Long id;
 
     private String serialNumber;
-    private String customerName;
-    private String issueDescription;
-    private String status;
+    private String claimantName;
+    private String claimantEmail;
+    private String claimReason;
 
-    private LocalDateTime createdAt;
-    private String resolution;
+    private LocalDateTime submittedAt;
+
+    private String status = "PENDING";
+
+    @PrePersist
+    public void prePersist() {
+        submittedAt = LocalDateTime.now();
+    }
+    // getters/setters
 }
