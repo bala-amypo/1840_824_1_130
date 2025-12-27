@@ -3,11 +3,13 @@ package com.example.demo.service.impl;
 import com.example.demo.model.*;
 import com.example.demo.repository.*;
 import com.example.demo.service.WarrantyClaimService;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+@Service
 public class WarrantyClaimServiceImpl implements WarrantyClaimService {
 
     private final WarrantyClaimRecordRepository claimRepo;
@@ -64,7 +66,6 @@ public class WarrantyClaimServiceImpl implements WarrantyClaimService {
         return claimRepo.save(c);
     }
 
-    // ✅ MUST return entity, not Optional
     @Override
     public WarrantyClaimRecord getClaimById(Long id) {
         return claimRepo.findById(id)

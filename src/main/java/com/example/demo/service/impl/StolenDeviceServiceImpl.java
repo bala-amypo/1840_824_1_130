@@ -17,29 +17,22 @@ public class StolenDeviceServiceImpl implements StolenDeviceService {
 
     public StolenDeviceServiceImpl(
             StolenDeviceReportRepository stolenRepo,
-            DeviceOwnershipRecordRepository deviceRepo
-    ) {
+            DeviceOwnershipRecordRepository deviceRepo) {
+
         this.stolenRepo = stolenRepo;
         this.deviceRepo = deviceRepo;
     }
 
     @Override
     public StolenDeviceReport reportStolen(StolenDeviceReport report) {
-        if (!deviceRepo.existsBySerialNumber(report.getSerialNumber())) {
-            throw new NoSuchElementException("Device not found");
-        }
+        deviceRepo.findBySerialNumber(report.getSerialNumber())
+                .orElseThrow(NoSuchElementException::new);
         return stolenRepo.save(report);
     }
 
     @Override
     public List<StolenDeviceReport> getReportsBySerial(String serialNumber) {
         return stolenRepo.findBySerialNumber(serialNumber);
-    }
-
-    @Override
-    public StolenDeviceReport getReportById(Long id) {
-        return stolenRepo.findById(id)
-                .orElseThrow(() -> new NoSuchElementException("Report not found"));
     }
 
     @Override
