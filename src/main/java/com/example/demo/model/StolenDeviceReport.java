@@ -1,20 +1,26 @@
 package com.example.demo.model;
 
+import jakarta.persistence.*;
+import lombok.*;
+
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class StolenDeviceReport {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String serialNumber;
+
     private String reporterName;
+
     private String reportReason;
-
-    public StolenDeviceReport() {
-    }
-
-    public StolenDeviceReport(Long id, String serialNumber, String reporterName, String reportReason) {
-        this.id = id;
-        this.serialNumber = serialNumber;
-        this.reporterName = reporterName;
-        this.reportReason = reportReason;
-    }
+}
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }

@@ -1,20 +1,28 @@
 package com.example.demo.model;
 
+import jakarta.persistence.*;
+import lombok.*;
+
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class WarrantyClaimRecord {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String serialNumber;
+
     private String claimReason;
-    private String status;
 
-    public WarrantyClaimRecord() {
-    }
+    @Builder.Default
+    private String status = "PENDING";
+}
 
-    public WarrantyClaimRecord(Long id, String serialNumber, String claimReason, String status) {
-        this.id = id;
-        this.serialNumber = serialNumber;
-        this.claimReason = claimReason;
-        this.status = status;
-    }
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
