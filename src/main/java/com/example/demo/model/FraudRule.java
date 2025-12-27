@@ -7,8 +7,7 @@ public class FraudRule {
     private String ruleType;
     private boolean active;
 
-    public FraudRule() {
-    }
+    public FraudRule() {}
 
     public FraudRule(Long id, String ruleCode, String description, String ruleType, boolean active) {
         this.id = id;
