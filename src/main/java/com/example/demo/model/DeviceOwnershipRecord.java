@@ -47,4 +47,3 @@ public class DeviceOwnershipRecord {
         this.active = active;
     }
 }
-`
