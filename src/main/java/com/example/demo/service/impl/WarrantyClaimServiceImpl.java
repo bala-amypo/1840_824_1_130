@@ -1,32 +1,83 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.model.FraudAlertRecord;
-import com.example.demo.model.WarrantyClaimRecord;
+import com.example.demo.model.*;
+import com.example.demo.repository.*;
 import com.example.demo.service.WarrantyClaimService;
-import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.time.LocalDate;
+import java.util.List;
+import java.util.NoSuchElementException;
 
-@Service
 public class WarrantyClaimServiceImpl implements WarrantyClaimService {
 
-    private Map<Long, WarrantyClaimRecord> claims = new HashMap<>();
+    private final WarrantyClaimRecordRepository claimRepo;
+    private final DeviceOwnershipRecordRepository deviceRepo;
+    private final StolenDeviceReportRepository stolenRepo;
+    private final FraudAlertRecordRepository alertRepo;
+    private final FraudRuleRepository ruleRepo;
 
-    @Override
-    public FraudAlertRecord createFraudAlertFromClaim(WarrantyClaimRecord claim) {
-        // Use correct constructor
-        return new FraudAlertRecord(
-                claim.getId(),
-                claim.getSerialNumber(),
-                "WarrantyClaimAlert",
-                claim.getClaimReason(),
-                "ExtraInfo"
-        );
+    public WarrantyClaimServiceImpl(
+            WarrantyClaimRecordRepository claimRepo,
+            DeviceOwnershipRecordRepository deviceRepo,
+            StolenDeviceReportRepository stolenRepo,
+            FraudAlertRecordRepository alertRepo,
+            FraudRuleRepository ruleRepo) {
+
+        this.claimRepo = claimRepo;
+        this.deviceRepo = deviceRepo;
+        this.stolenRepo = stolenRepo;
+        this.alertRepo = alertRepo;
+        this.ruleRepo = ruleRepo;
     }
 
     @Override
-    public void updateClaimStatus(WarrantyClaimRecord c, String status) {
+    public WarrantyClaimRecord submitClaim(WarrantyClaimRecord record) {
+
+        DeviceOwnershipRecord device = deviceRepo
+                .findBySerialNumber(record.getSerialNumber())
+                .orElseThrow(NoSuchElementException::new);
+
+        boolean flagged = false;
+
+        if (claimRepo.existsBySerialNumberAndClaimReason(
+                record.getSerialNumber(), record.getClaimReason())) {
+            flagged = true;
+        }
+
+        if (device.getWarrantyExpiration().isBefore(LocalDate.now())) {
+            flagged = true;
+        }
+
+        if (stolenRepo.existsBySerialNumber(record.getSerialNumber())) {
+            flagged = true;
+        }
+
+        record.setStatus(flagged ? "FLAGGED" : "PENDING");
+        return claimRepo.save(record);
+    }
+
+    @Override
+    public WarrantyClaimRecord updateClaimStatus(Long id, String status) {
+        WarrantyClaimRecord c = claimRepo.findById(id)
+                .orElseThrow(NoSuchElementException::new);
         c.setStatus(status);
+        return claimRepo.save(c);
+    }
+
+    // ✅ MUST return entity, not Optional
+    @Override
+    public WarrantyClaimRecord getClaimById(Long id) {
+        return claimRepo.findById(id)
+                .orElseThrow(NoSuchElementException::new);
+    }
+
+    @Override
+    public List<WarrantyClaimRecord> getAllClaims() {
+        return claimRepo.findAll();
+    }
+
+    @Override
+    public List<WarrantyClaimRecord> getClaimsBySerial(String serialNumber) {
+        return claimRepo.findBySerialNumber(serialNumber);
     }
 }
