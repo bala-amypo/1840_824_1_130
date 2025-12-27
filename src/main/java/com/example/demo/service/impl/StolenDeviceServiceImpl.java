@@ -29,6 +29,7 @@ public class StolenDeviceServiceImpl implements StolenDeviceService {
         return stolenRepo.save(report);
     }
 
+    // ✅ NOW CORRECTLY OVERRIDES INTERFACE METHOD
     @Override
     public StolenDeviceReport getReportById(Long id) {
         return stolenRepo.findById(id)

@@ -8,6 +8,9 @@ public interface StolenDeviceService {
 
     StolenDeviceReport reportStolen(StolenDeviceReport report);
 
+    // ✅ ADD THIS METHOD (THIS IS THE KEY FIX)
+    StolenDeviceReport getReportById(Long id);
+
     List<StolenDeviceReport> getReportsBySerial(String serialNumber);
 
     List<StolenDeviceReport> getAllReports();
