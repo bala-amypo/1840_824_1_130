@@ -1,3 +1,21 @@
+// package com.example.demo.service;
+
+// import com.example.demo.model.FraudAlertRecord;
+
+// import java.util.List;
+
+// public interface FraudAlertService {
+
+//     FraudAlertRecord createAlert(FraudAlertRecord record);
+
+//     FraudAlertRecord resolveAlert(Long id);
+
+//     List<FraudAlertRecord> getAlertsByClaim(Long claimId);
+
+//     List<FraudAlertRecord> getAlertsBySerial(String serialNumber);
+
+//     List<FraudAlertRecord> getAllAlerts();
+// }
 package com.example.demo.service;
 
 import com.example.demo.model.FraudAlertRecord;
@@ -11,8 +29,4 @@ public interface FraudAlertService {
     FraudAlertRecord resolveAlert(Long id);
 
     List<FraudAlertRecord> getAlertsByClaim(Long claimId);
-
-    List<FraudAlertRecord> getAlertsBySerial(String serialNumber);
-
-    List<FraudAlertRecord> getAllAlerts();
 }

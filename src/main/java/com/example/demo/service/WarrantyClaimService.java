@@ -1,8 +1,27 @@
+// package com.example.demo.service;
+
+// import com.example.demo.model.WarrantyClaimRecord;
+
+// import java.util.List;
+
+// public interface WarrantyClaimService {
+
+//     WarrantyClaimRecord submitClaim(WarrantyClaimRecord record);
+
+//     WarrantyClaimRecord updateClaimStatus(Long id, String status);
+
+//     WarrantyClaimRecord getClaimById(Long id);
+
+//     List<WarrantyClaimRecord> getAllClaims();
+
+//     List<WarrantyClaimRecord> getClaimsBySerial(String serialNumber);
+// }
 package com.example.demo.service;
 
 import com.example.demo.model.WarrantyClaimRecord;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface WarrantyClaimService {
 
@@ -10,7 +29,7 @@ public interface WarrantyClaimService {
 
     WarrantyClaimRecord updateClaimStatus(Long id, String status);
 
-    WarrantyClaimRecord getClaimById(Long id);
+    Optional<WarrantyClaimRecord> getClaimById(Long id);
 
     List<WarrantyClaimRecord> getAllClaims();
 
