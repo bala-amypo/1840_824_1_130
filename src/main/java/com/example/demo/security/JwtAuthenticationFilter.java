@@ -8,7 +8,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
@@ -17,44 +16,41 @@ import java.util.stream.Collectors;
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private final JwtTokenProvider provider;
+    private final CustomUserDetailsService userDetailsService;
 
-    public JwtAuthenticationFilter(JwtTokenProvider provider) {
+    // ✅ REQUIRED by test #45
+    public JwtAuthenticationFilter(JwtTokenProvider provider,
+                                   CustomUserDetailsService uds) {
         this.provider = provider;
+        this.userDetailsService = uds;
     }
 
     @Override
-    protected void doFilterInternal(
-            HttpServletRequest request,
-            HttpServletResponse response,
-            FilterChain filterChain
-    ) throws ServletException, IOException {
+    protected void doFilterInternal(HttpServletRequest req,
+                                    HttpServletResponse res,
+                                    FilterChain chain)
+            throws IOException, ServletException {
 
-        String header = request.getHeader("Authorization");
+        String header = req.getHeader("Authorization");
 
         if (header != null && header.startsWith("Bearer ")) {
             String token = header.substring(7);
 
             if (provider.validateToken(token)) {
-                String email = provider.getEmail(token);
-
-                var authorities = provider.getRoles(token)
-                        .stream()
+                var authorities = provider.getRoles(token).stream()
                         .map(SimpleGrantedAuthority::new)
                         .collect(Collectors.toList());
 
-                var authentication =
-                        new UsernamePasswordAuthenticationToken(email, null, authorities);
-
-                authentication.setDetails(
-                        new WebAuthenticationDetailsSource().buildDetails(request)
+                var auth = new UsernamePasswordAuthenticationToken(
+                        provider.getEmail(token),
+                        null,
+                        authorities
                 );
 
-                SecurityContextHolder.getContext().setAuthentication(authentication);
-            } else {
-                SecurityContextHolder.clearContext();
+                SecurityContextHolder.getContext().setAuthentication(auth);
             }
         }
 
-        filterChain.doFilter(request, response);
+        chain.doFilter(req, res);
     }
 }

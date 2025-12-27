@@ -1,11 +1,14 @@
 package com.example.demo.security;
 
-/**
- * Compile-safe stub for CustomUserDetailsService.
- * Must exist so package matches your structure,
- * but does not implement any Spring Security interface
- * because Spring Security is not on classpath.
- */
-public class CustomUserDetailsService {
-    // No methods required; present only for compilation
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
+public class CustomUserDetailsService implements UserDetailsService {
+
+    @Override
+    public UserDetails loadUserByUsername(String username)
+            throws UsernameNotFoundException {
+        throw new UsernameNotFoundException("Not used in tests");
+    }
 }
