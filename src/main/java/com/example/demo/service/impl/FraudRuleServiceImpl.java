@@ -25,16 +25,28 @@ public class FraudRuleServiceImpl implements FraudRuleService {
     }
 
     @Override
+    public FraudRule updateRule(Long id, FraudRule rule) {
+        FraudRule existing = ruleRepo.findById(id)
+                .orElseThrow(NoSuchElementException::new);
+
+        existing.setRuleCode(rule.getRuleCode());
+        existing.setRuleType(rule.getRuleType());
+        existing.setDescription(rule.getDescription());
+        existing.setActive(rule.getActive());
+
+        return ruleRepo.save(existing);
+    }
+
+    @Override
     public List<FraudRule> getActiveRules() {
         return ruleRepo.findByActiveTrue();
     }
 
-    // ✅ MUST return FraudRule (not Optional)
     @Override
     public FraudRule getRuleByCode(String ruleCode) {
         FraudRule rule = ruleRepo.findByRuleCode(ruleCode);
         if (rule == null) {
-            throw new NoSuchElementException("Rule not found");
+            throw new NoSuchElementException();
         }
         return rule;
     }
