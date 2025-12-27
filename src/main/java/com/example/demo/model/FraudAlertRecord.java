@@ -2,48 +2,29 @@ package com.example.demo.model;
 
 public class FraudAlertRecord {
     private Long id;
-    private String alertCode;
-    private String description;
+    private String serialNumber;
+    private String alertType;
     private boolean resolved;
 
-    public FraudAlertRecord() {}
+    public FraudAlertRecord() {
+    }
 
-    public FraudAlertRecord(Long id, String alertCode, String description, boolean resolved) {
+    public FraudAlertRecord(Long id, String serialNumber, String alertType, boolean resolved) {
         this.id = id;
-        this.alertCode = alertCode;
-        this.description = description;
+        this.serialNumber = serialNumber;
+        this.alertType = alertType;
         this.resolved = resolved;
     }
 
-    public Long getId() {
-        return id;
-    }
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public String getSerialNumber() { return serialNumber; }
+    public void setSerialNumber(String serialNumber) { this.serialNumber = serialNumber; }
 
-    public String getAlertCode() {
-        return alertCode;
-    }
+    public String getAlertType() { return alertType; }
+    public void setAlertType(String alertType) { this.alertType = alertType; }
 
-    public void setAlertCode(String alertCode) {
-        this.alertCode = alertCode;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public boolean isResolved() {
-        return resolved;
-    }
-
-    public void setResolved(boolean resolved) {
-        this.resolved = resolved;
-    }
+    public boolean isResolved() { return resolved; }
+    public void setResolved(boolean resolved) { this.resolved = resolved; }
 }
