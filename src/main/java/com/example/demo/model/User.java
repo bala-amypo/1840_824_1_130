@@ -1,18 +1,65 @@
 package com.example.demo.model;
 
-import lombok.*;
-
-import java.util.HashSet;
 import java.util.Set;
 
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class User {
-    private Long id;
+    private long id;
+    private String name;
     private String email;
     private String password;
-    private Set<String> roles = new HashSet<>();
-    private String name;
+    private Set<String> roles;
+
+    public User() {
+    }
+
+    public User(long id, String name, String email, String password, Set<String> roles) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.roles = roles;
+    }
+
+    // Getters and Setters
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Set<String> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<String> roles) {
+        this.roles = roles;
+    }
 }
+`
