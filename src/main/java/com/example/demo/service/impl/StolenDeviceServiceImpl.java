@@ -1,3 +1,51 @@
+// package com.example.demo.service.impl;
+
+// import com.example.demo.model.StolenDeviceReport;
+// import com.example.demo.repository.DeviceOwnershipRecordRepository;
+// import com.example.demo.repository.StolenDeviceReportRepository;
+// import com.example.demo.service.StolenDeviceService;
+// import org.springframework.stereotype.Service;
+
+// import java.util.List;
+// import java.util.NoSuchElementException;
+
+// @Service
+// public class StolenDeviceServiceImpl implements StolenDeviceService {
+
+//     private final StolenDeviceReportRepository stolenRepo;
+//     private final DeviceOwnershipRecordRepository deviceRepo;
+
+//     public StolenDeviceServiceImpl(
+//             StolenDeviceReportRepository stolenRepo,
+//             DeviceOwnershipRecordRepository deviceRepo) {
+//         this.stolenRepo = stolenRepo;
+//         this.deviceRepo = deviceRepo;
+//     }
+
+//     @Override
+//     public StolenDeviceReport reportStolen(StolenDeviceReport report) {
+//         deviceRepo.findBySerialNumber(report.getSerialNumber())
+//                 .orElseThrow(NoSuchElementException::new);
+//         return stolenRepo.save(report);
+//     }
+
+//     // ✅ NOW CORRECTLY OVERRIDES INTERFACE METHOD
+//     @Override
+//     public StolenDeviceReport getReportById(Long id) {
+//         return stolenRepo.findById(id)
+//                 .orElseThrow(NoSuchElementException::new);
+//     }
+
+//     @Override
+//     public List<StolenDeviceReport> getReportsBySerial(String serialNumber) {
+//         return stolenRepo.findBySerialNumber(serialNumber);
+//     }
+
+//     @Override
+//     public List<StolenDeviceReport> getAllReports() {
+//         return stolenRepo.findAll();
+//     }
+// }
 package com.example.demo.service.impl;
 
 import com.example.demo.model.StolenDeviceReport;
@@ -27,13 +75,6 @@ public class StolenDeviceServiceImpl implements StolenDeviceService {
         deviceRepo.findBySerialNumber(report.getSerialNumber())
                 .orElseThrow(NoSuchElementException::new);
         return stolenRepo.save(report);
-    }
-
-    // ✅ NOW CORRECTLY OVERRIDES INTERFACE METHOD
-    @Override
-    public StolenDeviceReport getReportById(Long id) {
-        return stolenRepo.findById(id)
-                .orElseThrow(NoSuchElementException::new);
     }
 
     @Override
