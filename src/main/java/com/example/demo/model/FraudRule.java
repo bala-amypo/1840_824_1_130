@@ -1,15 +1,59 @@
 package com.example.demo.model;
 
-import lombok.*;
-
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class FraudRule {
     private Long id;
     private String ruleCode;
     private String description;
     private String ruleType;
-    private Boolean active = true;
+    private boolean active;
+
+    public FraudRule() {}
+
+    public FraudRule(Long id, String ruleCode, String description, String ruleType, boolean active) {
+        this.id = id;
+        this.ruleCode = ruleCode;
+        this.description = description;
+        this.ruleType = ruleType;
+        this.active = active;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getRuleCode() {
+        return ruleCode;
+    }
+
+    public void setRuleCode(String ruleCode) {
+        this.ruleCode = ruleCode;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getRuleType() {
+        return ruleType;
+    }
+
+    public void setRuleType(String ruleType) {
+        this.ruleType = ruleType;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
 }

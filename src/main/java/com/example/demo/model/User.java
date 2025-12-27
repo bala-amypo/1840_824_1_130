@@ -1,49 +1,34 @@
 package com.example.demo.model;
 
-import java.util.Set;
-
 public class User {
-    private long id;
-    private String name;
-    private String email;
+    private Long id;
+    private String username;
     private String password;
-    private Set<String> roles;
+    private String role;
 
-    public User() {
-    }
+    public User() {}
 
-    public User(long id, String name, String email, String password, Set<String> roles) {
+    public User(Long id, String username, String password, String role) {
         this.id = id;
-        this.name = name;
-        this.email = email;
+        this.username = username;
         this.password = password;
-        this.roles = roles;
+        this.role = role;
     }
 
-    // Getters and Setters
-
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -54,11 +39,11 @@ public class User {
         this.password = password;
     }
 
-    public Set<String> getRoles() {
-        return roles;
+    public String getRole() {
+        return role;
     }
 
-    public void setRoles(Set<String> roles) {
-        this.roles = roles;
+    public void setRole(String role) {
+        this.role = role;
     }
 }
