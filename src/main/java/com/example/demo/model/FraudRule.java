@@ -1,21 +1,30 @@
 package com.example.demo.model;
 
+import jakarta.persistence.*;
+import lombok.*;
+
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class FraudRule {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String ruleCode;
+
     private String description;
+
     private String ruleType;
-    private boolean active;
 
-    public FraudRule() {}
+    @Builder.Default
+    private Boolean active = true;
+}
 
-    public FraudRule(Long id, String ruleCode, String description, String ruleType, boolean active) {
-        this.id = id;
-        this.ruleCode = ruleCode;
-        this.description = description;
-        this.ruleType = ruleType;
-        this.active = active;
-    }
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }

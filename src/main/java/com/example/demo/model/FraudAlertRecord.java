@@ -1,28 +1,29 @@
 package com.example.demo.model;
 
+import jakarta.persistence.*;
+import lombok.*;
+
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class FraudAlertRecord {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    private Long claimId;
     private String serialNumber;
     private String alertType;
     private String reason;
-    private boolean resolved;
 
-    public FraudAlertRecord() {}
+    @Builder.Default
+    private Boolean resolved = false;
+}
 
-    public FraudAlertRecord(Long id, String serialNumber, String alertType, boolean resolved) {
-        this.id = id;
-        this.serialNumber = serialNumber;
-        this.alertType = alertType;
-        this.resolved = resolved;
-    }
-
-    public FraudAlertRecord(Long id, String serialNumber, String alertType, String reason, String extraField) {
-        this.id = id;
-        this.serialNumber = serialNumber;
-        this.alertType = alertType;
-        this.reason = reason;
-        this.resolved = false; // default
-    }
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
