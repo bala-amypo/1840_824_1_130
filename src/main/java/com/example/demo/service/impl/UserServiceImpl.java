@@ -1,37 +1,32 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.dto.AuthRequest;
-import com.example.demo.dto.RegisterRequest;
 import com.example.demo.model.User;
-import com.example.demo.repository.UserRepository;
 import com.example.demo.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 @Service
 public class UserServiceImpl implements UserService {
 
-    @Autowired
-    private UserRepository userRepository;
+    private Map<Long, User> users = new HashMap<>();
 
     @Override
-    public User registerUser(RegisterRequest req) {
-        User u = new User();
-        u.setName(req.getName());
-        u.setEmail(req.getEmail());
-        u.setPassword(req.getPassword()); // In real app: hash password
-        u.setRoles(req.getRoles());
-
-        userRepository.save(u);
+    public User updateUser(Long id, User updatedUser) {
+        User u = users.get(id);
+        if (u != null) {
+            u.setName(updatedUser.getName());
+            u.setEmail(updatedUser.getEmail());
+            u.setPassword(updatedUser.getPassword());
+            u.setRoles(updatedUser.getRoles());
+        }
         return u;
     }
 
     @Override
-    public User authenticate(AuthRequest req) {
-        User u = userRepository.findByEmail(req.getEmail());
-        if (u != null && u.getPassword().equals(req.getPassword())) {  // simple password check
-            return u;
-        }
-        throw new RuntimeException("Invalid credentials");
+    public User getUserById(Long id) {
+        return users.get(id);
     }
 }
