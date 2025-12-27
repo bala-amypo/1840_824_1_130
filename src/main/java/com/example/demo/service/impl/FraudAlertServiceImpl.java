@@ -35,4 +35,14 @@ public class FraudAlertServiceImpl implements FraudAlertService {
     public List<FraudAlertRecord> getAlertsByClaim(Long claimId) {
         return alertRepo.findByClaimId(claimId);
     }
+
+    @Override
+    public List<FraudAlertRecord> getAlertsBySerial(String serialNumber) {
+        return alertRepo.findBySerialNumber(serialNumber);
+    }
+
+    @Override
+    public List<FraudAlertRecord> getAllAlerts() {
+        return alertRepo.findAll();
+    }
 }

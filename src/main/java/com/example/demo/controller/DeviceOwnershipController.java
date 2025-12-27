@@ -3,36 +3,33 @@ package com.example.demo.controller;
 import com.example.demo.model.DeviceOwnershipRecord;
 import com.example.demo.service.DeviceOwnershipService;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @RestController
-@RequestMapping("/api/devices")
+@RequestMapping("/devices")
 public class DeviceOwnershipController {
 
-    private final DeviceOwnershipService service;
+    private final DeviceOwnershipService deviceService;
 
-    public DeviceOwnershipController(DeviceOwnershipService service) {
-        this.service = service;
+    public DeviceOwnershipController(DeviceOwnershipService deviceService) {
+        this.deviceService = deviceService;
     }
 
     @PostMapping
-    public DeviceOwnershipRecord register(@RequestBody DeviceOwnershipRecord d) {
-        return service.registerDevice(d);
+    public DeviceOwnershipRecord register(@RequestBody DeviceOwnershipRecord record) {
+        return deviceService.registerDevice(record);
     }
 
-    @PutMapping("/{id}/status")
-    public DeviceOwnershipRecord updateStatus(@PathVariable Long id,
-                                              @RequestParam boolean active) {
-        return service.updateDeviceStatus(id, active);
-    }
-
-    @GetMapping("/serial/{serial}")
-    public DeviceOwnershipRecord getBySerial(@PathVariable("serial") String serial) {
-        return service.getBySerial(serial);
+    @GetMapping("/{serial}")
+    public DeviceOwnershipRecord getBySerial(@PathVariable String serial) {
+        return deviceService.getBySerial(serial)
+                .orElseThrow(() -> new NoSuchElementException("Device not found"));
     }
 
     @GetMapping
-    public List<DeviceOwnershipRecord> listAll() {
-        return service.getAllDevices();
+    public List<DeviceOwnershipRecord> getAll() {
+        return deviceService.getAllDevices();
     }
 }
