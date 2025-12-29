@@ -16,8 +16,6 @@
     <groupId>com.example</groupId>
     <artifactId>demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>demo</name>
-    <description>Demo project for Spring Boot</description>
 
     <properties>
         <java.version>17</java.version>
@@ -31,29 +29,23 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!-- Spring Data JPA -->
+        <!-- JPA -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
 
-        <!-- Swagger / OpenAPI -->
+        <!-- Swagger -->
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
             <version>2.3.0</version>
         </dependency>
 
-        <!-- MySQL Driver -->
+        <!-- MySQL -->
         <dependency>
             <groupId>com.mysql</groupId>
             <artifactId>mysql-connector-j</artifactId>
-        </dependency>
-
-        <!-- Password Encoder (Security Crypto only) -->
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-crypto</artifactId>
         </dependency>
 
         <!-- Lombok -->
@@ -64,20 +56,15 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- Spring Boot Test (JUnit EXCLUDED) -->
+        <!-- Password Encoder -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.junit.jupiter</groupId>
-                    <artifactId>junit-jupiter</artifactId>
-                </exclusion>
-            </exclusions>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-crypto</artifactId>
         </dependency>
 
-        <!-- TestNG -->
+        <!-- ❌ DO NOT ADD spring-boot-starter-test -->
+
+        <!-- ✅ TestNG ONLY -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
@@ -90,22 +77,29 @@
     <build>
         <plugins>
 
-            <!-- Spring Boot Plugin -->
+            <!-- Spring Boot -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
 
-            <!-- FORCE TestNG -->
+            <!-- ✅ FORCE TESTNG PROVIDER -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.2.5</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.maven.surefire</groupId>
+                        <artifactId>surefire-testng</artifactId>
+                        <version>3.2.5</version>
+                    </dependency>
+                </dependencies>
                 <configuration>
                     <includes>
                         <include>**/*Test.java</include>
                     </includes>
-                    <testNGArtifactName>org.testng:testng</testNGArtifactName>
+                    <useModulePath>false</useModulePath>
                 </configuration>
             </plugin>
 
