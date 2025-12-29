@@ -17,8 +17,8 @@ public class OpenApiConfig {
     @Bean
     public OpenAPI customOpenAPI() {
 
-        // JWT Security Scheme
         SecurityScheme securityScheme = new SecurityScheme()
+                .name("bearerAuth")
                 .type(SecurityScheme.Type.HTTP)
                 .scheme("bearer")
                 .bearerFormat("JWT");
@@ -29,21 +29,19 @@ public class OpenApiConfig {
                         .description(
                                 "Backend REST API for detecting fraudulent warranty claims " +
                                 "using device ownership verification, stolen device tracking, " +
-                                "duplicate claim detection, and rule-based fraud alerts."
+                                "and rule-based fraud detection."
                         )
                         .version("1.0")
                         .contact(new Contact()
                                 .name("Selva Praveen")
-                                .email("tsp@gmail.com")
+                                .email("abiselvi1823@gmail.com")
                         )
                 )
-                .servers(List.of(
-                        new Server().url("https://9044.32procr.amypo.ai/")
-                ));
-                // Enable Authorize button globally
+                .servers(List.of( new Server().url("https://9044.32procr.amypo.ai/") ));
                 .addSecurityItem(new SecurityRequirement().addList("bearerAuth"))
-                .schemaRequirement("bearerAuth", securityScheme);
+                .components(
+                        new io.swagger.v3.oas.models.Components()
+                                .addSecuritySchemes("bearerAuth", securityScheme)
+                );
     }
 }
-
-
