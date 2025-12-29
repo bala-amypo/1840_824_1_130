@@ -17,9 +17,13 @@ public class DeviceOwnershipRecord {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(unique = true)
     private String serialNumber;
+
     private String ownerName;
     private String ownerEmail;
+
     private LocalDate warrantyExpiration;
-    private Boolean active;
+
+    private Boolean active = true;   // ✅ IMPORTANT DEFAULT
 }

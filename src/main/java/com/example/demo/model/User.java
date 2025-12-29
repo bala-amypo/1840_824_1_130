@@ -22,5 +22,6 @@ public class User {
     private String password;
 
     @ElementCollection(fetch = FetchType.EAGER)
-    private Set<String> roles;
+    @Builder.Default
+    private Set<String> roles = new java.util.HashSet<>();
 }
