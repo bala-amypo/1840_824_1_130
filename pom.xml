@@ -62,13 +62,19 @@
             <artifactId>spring-security-crypto</artifactId>
         </dependency>
 
-        <!-- ❌ DO NOT ADD spring-boot-starter-test -->
-
-        <!-- ✅ TestNG ONLY -->
+        <!-- ✅ TestNG -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>7.8.0</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- ✅ MOCKITO (THIS FIXES EVERYTHING) -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>5.11.0</version>
             <scope>test</scope>
         </dependency>
 
@@ -83,7 +89,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
 
-            <!-- ✅ FORCE TESTNG PROVIDER -->
+            <!-- FORCE TESTNG -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
